@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import {Item} from "../../interfaces/iItem";
 
@@ -7,13 +7,19 @@ import {Item} from "../../interfaces/iItem";
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent implements OnInit, OnChanges {
   @Input() item!: Item;
   faPen = faPen;
   faTrash = faTrash
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log('OnInit');
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('OnChanges');
+  }
 
 }
